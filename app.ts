@@ -4,6 +4,7 @@ import { join } from "path";
 // var logger = require("morgan");
 
 import routes from "./routes";
+import errorHandler from "./middlewares/error";
 
 const app = express();
 
@@ -14,5 +15,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(join(__dirname, "public")));
 
 app.use("/api", routes);
+
+//错误处理
+app.use(errorHandler);
 
 export default app;

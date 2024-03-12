@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { loginService } from "../services/UserService";
+import { loginService } from "../services/auth.service";
 
 export const login = async (req: Request, res: Response) => {
   await loginService(req.body);
