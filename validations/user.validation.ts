@@ -3,9 +3,10 @@ import { password, objectId } from "./custom.validation";
 
 const createUserValidate = {
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().custom(password),
     name: Joi.string().required(),
+    password: Joi.string().required().custom(password),
+    email: Joi.string().required().email(),
+    gender: Joi.number().required(),
     // role: Joi.string().required().valid("user", "admin"),
   }),
 };

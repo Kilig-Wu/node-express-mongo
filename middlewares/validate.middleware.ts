@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import createError from "http-errors";
 import { pick } from "lodash";
 
+//入参校验中间件
 const validate =
   (schema: Record<string, any>) =>
   (req: Request, res: Response, next: NextFunction) => {

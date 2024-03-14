@@ -1,4 +1,12 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document, InferSchemaType } from "mongoose";
+
+// export interface UserDocument extends Document {
+//   name: string;
+//   password: string;
+//   gender: number;
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
 
 let UserSchema = new Schema(
   {
@@ -7,10 +15,20 @@ let UserSchema = new Schema(
       required: true,
       trim: true,
     },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    gender: {
+      type: Number,
+      required: true,
+      enum: [1, 2], //1-男 2-女
+    },
     email: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
       trim: true,
       lowercase: true,
     },
@@ -19,7 +37,8 @@ let UserSchema = new Schema(
     timestamps: true,
   }
 );
+export type UserDocument = InferSchemaType<typeof UserSchema>;
 
-let UserModel = model("users", UserSchema);
+let UserModel = model<UserDocument>("users", UserSchema);
 
 export default UserModel;
