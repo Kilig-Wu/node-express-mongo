@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { loginService } from "../services/auth.service";
+import { catchAsync } from "../helpers/common";
 
-export const login = async (req: Request, res: Response) => {
+export const login = catchAsync(async (req: Request, res: Response) => {
   await loginService(req.body);
-  res.json({
-    code: 200,
-  });
-};
+  res.sendResponse(null, "", 200);
+});

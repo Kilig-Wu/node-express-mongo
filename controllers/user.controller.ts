@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { createUserService } from "../services/user.service";
-import { catchAsync } from "../utils";
+import { catchAsync } from "../helpers/common";
 
 export const createUser = catchAsync(async (req: Request, res: Response) => {
   await createUserService(req.body);

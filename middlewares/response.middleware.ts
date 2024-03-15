@@ -10,7 +10,7 @@ const responseMiddleware = (
     res.status(status).json({
       code: status,
       success: true,
-      message: message || "请求成功",
+      message,
       data: data,
     });
     return res;
@@ -20,7 +20,7 @@ const responseMiddleware = (
     res.status(status).json({
       code: status,
       success: false,
-      message: message || "服务器错误",
+      message,
     });
     return res;
   };
