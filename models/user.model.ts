@@ -10,9 +10,15 @@ import { Schema, model, Document, InferSchemaType } from "mongoose";
 
 let UserSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       required: true,
+      unique: true,
+      // 删除左右两边的空格
+      trim: true,
+    },
+    name: {
+      type: String,
       trim: true,
     },
     password: {
@@ -20,17 +26,20 @@ let UserSchema = new Schema(
       required: true,
       trim: true,
     },
-    gender: {
-      type: Number,
+    phone: {
+      type: String,
       required: true,
-      enum: [1, 2], //1-男 2-女
+      unique: true,
+      trim: true,
     },
     email: {
       type: String,
-      required: true,
-      // unique: true,
       trim: true,
       lowercase: true,
+    },
+    gender: {
+      type: Number,
+      enum: [1, 2], //1-男 2-女
     },
   },
   {

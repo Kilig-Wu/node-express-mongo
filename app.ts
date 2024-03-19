@@ -1,3 +1,6 @@
+//路径别名
+import "module-alias/register";
+
 import express from "express";
 import { join } from "path";
 // var cookieParser = require("cookie-parser");

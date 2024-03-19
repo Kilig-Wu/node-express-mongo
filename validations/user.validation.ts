@@ -1,12 +1,14 @@
 import Joi from "joi";
-import { password, objectId } from "./custom.validation";
+import { password, objectId, phone } from "./custom.validation";
 
 const createUserValidate = {
   body: Joi.object().keys({
-    name: Joi.string().required(),
+    username: Joi.string().required().alphanum().min(3).max(30),
     password: Joi.string().required().custom(password),
-    email: Joi.string().required().email(),
-    gender: Joi.number().required(),
+    phone: Joi.string().required().custom(phone),
+    email: Joi.string().email(),
+    gender: Joi.number(),
+    name: Joi.string(),
     // role: Joi.string().required().valid("user", "admin"),
   }),
 };
