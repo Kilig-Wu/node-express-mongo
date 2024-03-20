@@ -7,11 +7,11 @@ export const loginService = async (
   userBody: Pick<UserDocument, "username" | "password">
 ) => {
   const user = await findUserService({ username: userBody.username.trim() });
-  console.log(user);
+  //TODO:解密后的密码和数据库能对上
 
-  if (user) {
-    return user;
-  } else {
-    throw createError(400, "用户不存在");
+  if (!user || user?.password !== userBody.password) {
+    throw createError(400, "用户名/密码错误");
   }
+
+  return user;
 };
